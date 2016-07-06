@@ -1,0 +1,1 @@
+from auth import basic_auth_required
