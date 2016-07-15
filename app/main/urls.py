@@ -4,6 +4,8 @@ from . import api_views
 
 main = Blueprint('main', __name__)
 
+main.add_url_rule('/', 'index', api_views.index)
+
 main.add_url_rule('/api/notifications/creation/', view_func=api_views.UserNotificationListView.as_view('create_notification'))
 main.add_url_rule('/api/notifications/sent/', view_func=api_views.UserNotificationListView.as_view('send_notifications'))
 main.add_url_rule('/api/notifications/received/', view_func=api_views.UserNotificationListView.as_view('received_notifications'), defaults={'is_sent':False})

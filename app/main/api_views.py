@@ -17,6 +17,9 @@ dictConfig(logging_config)
 
 logger = logging.getLogger()
 
+def index():
+    template_name = 'index.html'
+    return render_template(template_name)
 
 def jsonify_list_paginated(list_to_paginate, schema, list_name='result'):
     try:

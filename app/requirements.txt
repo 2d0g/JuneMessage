@@ -1,0 +1,12 @@
+flask
+flask-script
+flask-login
+Flask-WTF
+flask-principal
+WTForms
+mongoengine
+flask_mongoengine
+markdown2
+Flask-Mail
+marshmallow
+Flask-OAuthlib

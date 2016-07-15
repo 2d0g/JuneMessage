@@ -12,6 +12,12 @@ from . import models, forms
 
 accounts = Blueprint('accounts', __name__)
 
+def get_current_user():
+    try:
+        return models.User.objects.get(username=current_user.username)
+    except models.User.DoesNotExist:
+        return None
+
 def login():
     form = forms.LoginForm()
     if form.validate_on_submit():

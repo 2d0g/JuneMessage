@@ -5,6 +5,7 @@ from flask_mongoengine import MongoEngine
 from flask_login import LoginManager
 from flask_principal import Principal
 from flask_mail import Mail
+from flask_oauthlib.provider import OAuth2Provider
 
 from config import config
 
@@ -18,6 +19,8 @@ principals = Principal()
 
 mail = Mail()
 
+oauth = OAuth2Provider()
+
 def create_app(config_name):
     app = Flask(__name__, 
         template_folder=config[config_name].TEMPLATE_PATH, static_folder=config[config_name].STATIC_PATH)
@@ -29,6 +32,7 @@ def create_app(config_name):
     login_manager.init_app(app)
     principals.init_app(app)
     mail.init_app(app)
+    oauth.init_app(app)
 
     from main.urls import main as main_blueprint
     from accounts.views import accounts as accounts_blueprint

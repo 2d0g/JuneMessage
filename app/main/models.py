@@ -7,30 +7,6 @@ import markdown2
 
 from JuneMessage import db
 
-# class Message(db.Document):
-#     title = db.StringField(required=True)
-#     body_raw = db.StringField()
-#     body_rich = db.StringField()
-#     from_whom = db.StringField(default='admin')
-#     to_whom = db.StringField(required=True)
-#     is_read = db.BooleanField(default=False)
-#     is_draft = db.BooleanField(default=False)
-#     create_time = db.DateTimeField(required=True, default=datetime.datetime.now())
-#     update_time = db.DateTimeField(required=True, default=datetime.datetime.now())
-
-#     def save(self, *args, **kwargs):
-#         self.body_rich = markdown2.markdown(self.body_raw, extras=['code-friendly', 'fenced-code-blocks']).encode('utf-8')
-#         return super(Message, self).save(*args, **kwargs)
-
-#     def __unicode__(self):
-#         return self.title
-
-#     meta = {
-#         'allow_inheritance': True,
-#         # 'indexes': ['title'],
-#         'ordering': ['-update_time']
-#     }
-
 extend_default = {'username':{'email':'aaa@aa.aa', 'phone':'123456789'}}
 
 class Notification(db.Document):
