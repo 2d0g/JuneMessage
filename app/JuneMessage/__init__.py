@@ -36,8 +36,10 @@ def create_app(config_name):
 
     from main.urls import main as main_blueprint
     from accounts.views import accounts as accounts_blueprint
+    from oauth2.urls import oauth as oauth_blueprint
     app.register_blueprint(main_blueprint)
     app.register_blueprint(accounts_blueprint, url_prefix='/accounts')
+    app.register_blueprint(oauth_blueprint, url_prefix='/oauth')
 
     return app
 

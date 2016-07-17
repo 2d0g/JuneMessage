@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Applications{% endblock %}
+
+{% block main %}
+<div class="row">
+    <table class="table">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Client ID</th>
+            <th>Is Confidential</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ client.name }}</td>
+            <td>{{ client.client_id }}</td>
+            <td>{{ client.is_confidential }}</td>
+            <td>
+                <a href="#"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </a>
+                    &nbsp
+                <a href="#"  class="del-app"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> </a>
+            </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5">No application yet</td></tr>
+        {% endfor %}
+    </tbody>
+        
+    </table>
+</div>
+
+
+{% endblock %}
