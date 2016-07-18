@@ -4,7 +4,7 @@ flask-login
 Flask-WTF
 flask-principal
 WTForms
-mongoengine
+mongoengine==0.10.1
 flask_mongoengine
 markdown2
 Flask-Mail

@@ -6,6 +6,7 @@ from flask_login import LoginManager
 from flask_principal import Principal
 from flask_mail import Mail
 from flask_oauthlib.provider import OAuth2Provider
+from flask_admin import Admin
 
 from config import config
 
@@ -20,6 +21,15 @@ principals = Principal()
 mail = Mail()
 
 oauth = OAuth2Provider()
+
+
+# from ModelAdmin import GeneralAdminIndexView, register_admin_views
+# admin = Admin(name='JuneMessage Admin', index_view=GeneralAdminIndexView())
+
+def init_admin(app):
+    from ModelAdmin import GeneralAdminIndexView, register_admin_views
+    admin = Admin(app, name='JuneMessage Admin', index_view=GeneralAdminIndexView(url='/model-admin'))
+    register_admin_views(admin)
 
 def create_app(config_name):
     app = Flask(__name__, 
@@ -38,6 +48,8 @@ def create_app(config_name):
     from accounts.views import accounts as accounts_blueprint
     app.register_blueprint(main_blueprint)
     app.register_blueprint(accounts_blueprint, url_prefix='/accounts')
+
+    init_admin(app)
 
     return app
 
