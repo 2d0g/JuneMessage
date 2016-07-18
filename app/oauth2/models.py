@@ -15,7 +15,7 @@ class Client(db.Document):
     description = db.StringField()
 
     # creator of the client, not required
-    user_id = db.StringField()
+    # user_id = db.StringField()
     # required if you need to support client credential
     user = db.ReferenceField(User)
 
@@ -59,6 +59,7 @@ class Grant(db.Document):
     #     db.String(40), db.ForeignKey('client.client_id'),
     #     nullable=False,
     # )
+    client_id = db.StringField()
     client = db.ReferenceField(Client)
 
     code = db.StringField(required=True)
@@ -87,6 +88,7 @@ class Token(db.Document):
     # )
     # user = db.relationship('User')
 
+    client_id = db.StringField()
     client = db.ReferenceField(Client)
     user = db.ReferenceField(User)
 
