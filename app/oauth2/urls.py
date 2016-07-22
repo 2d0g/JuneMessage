@@ -8,3 +8,4 @@ from . import views
 oauth = Blueprint('oauth', __name__)
 
 oauth.add_url_rule('/view/applications/', view_func=views.ApplicationsView.as_view('oauth_applications'))
+oauth.add_url_rule('/view/new-application/', view_func=views.ApplicationsView.as_view('oauth_new_application'))
