@@ -154,7 +154,8 @@ def load_token(access_token=None, refresh_token=None):
 def save_token(token, request, *args, **kwargs):
     # toks = Token.query.filter_by(client_id=request.client.client_id,
     #                              user_id=request.user.id)
-    toks = Token.objects(client_id=request.client.client_id, user_id=request.user.id)
+    # user = User.objects(id=request.user.id)
+    toks = Token.objects(client_id=request.client.client_id, user=request.user)
     # make sure that every client has only one token connected to a user
     for t in toks:
         # db.session.delete(t)
@@ -176,3 +177,11 @@ def save_token(token, request, *args, **kwargs):
     # db.session.commit()
     tok.save()
     return tok
+
+@oauth.usergetter
+def get_user(username, password, *args, **kwargs):
+    user = User.objects(username=username).first()
+    if user.verify_password(password):
+        return user
+    return None
+

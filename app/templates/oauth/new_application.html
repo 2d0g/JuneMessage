@@ -7,9 +7,19 @@
     <div class="col-xs-6 col-sm-6">
         {% import "_form.html" as forms %}
         <form method="POST" action="" id='create'>
+
         {{ forms.render(form) }}
+
+        <!-- <p><strong>Client ID</strong></p>
+        <p>{{ client_id }}</p>
+        <p><strong>Client Secret</strong></p>
+        <p>{{ client_secret }}</p> -->
+        
             <button type="submit" class="btn btn-primary" name="create">Create</button>
         </form>
+
+        
+
     </div>
     <div class="col-xs-6 col-sm-3"></div>
 </div>
